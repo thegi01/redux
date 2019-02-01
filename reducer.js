@@ -171,7 +171,7 @@ function todos(state=[], action){
             ]
         case TOGGLE_TODO:
             return state.map((todo, index)=>{
-                if(index ===action.index ){
+                if(index === action.index ){
                     return Object.assign({}, todo, {
                         completed: !todo.completed
                     })
@@ -341,7 +341,7 @@ function todos(state = [], action){
             return [
                 ...state,
                 {
-                    text:actions.text,
+                    text: action.text,
                     completed: false
                 }
             ]
@@ -365,3 +365,4 @@ const todoApp = combineReducers({
 })
 
 export default todoApp
+

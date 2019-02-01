@@ -9,13 +9,13 @@
  * - Holds application state;
  * - Allows access to state via getState();
  * - Allows state to be updated via dispatch(action);
- * - Regiters linstener via subscribe(listener);
- * - Handles unregistering of linsteners via the function returned by subscribe(listener).
+ * - Regiters listener via subscribe(listener);
+ * - Handles unregistering of listeners via the function returned by subscribe(listener).
  */
 
 // createStore()
 
-import { createStore } from 'redux';
+import { createStore } from 'redux'
 import todoApp from './reducers'
 const store = createStore(todoApp)
 
@@ -47,7 +47,7 @@ store.dispatch(addTodo('Learn about reducers'))
 store.dispatch(addTodo('Learn about store'))
 store.dispatch(toggleTodo(0))
 store.dispatch(toggleTodo(1))
-store.dipatch(setVisibilityFilter(VisibilityFilter.SHOW_COMPLETED)
+store.dipatch(setVisibilityFilter(VisibilityFilter.SHOW_COMPLETED))
 
 // Store listening to state updates
 unsubscribe()
