@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter Vanila</title>
+    <meta name="viewport" content="width=device-width">
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+</head>
+<body>
+
+<div>
+    <p>
+        Clicked: <span id="display">0</span> times
+        <button id="increment">+</button>
+        <button id="decrement">-</button>
+        <button id="incrementIfOdd">Increment if odd</button>
+        <button id="incrementAsync">Increment async</button>
+    </p>
+
+    <!-- https://redux.js.org/introduction/examples#counter-vanilla -->
+</div>
+
+<script>
+    
+    function counter(state=0, action){
+        switch(action.type){
+            case 'INCREMENT':
+                return state+1
+            case 'DECREMENT':
+                return state-1
+            default:
+                return state
+        }
+    }
+
+    var store = Redux.createStore(counter)
+
+    function render(){
+        display.textContent = store.getState().toString();
+    }
+
+    render()
+    store.subscribe(render)
+    
+
+    // handle increment
+    increment.addEventListener('click', function(){
+        store.dispatch({ type:'INCREMENT' })
+    }, false);
+
+    // handle decrement
+    decrement.addEventListener('click', function(){
+        store.dispatch({ type:'DECREMENT' })
+    }, false);
+
+    // handle incrementIfOdd
+    incrementIfOdd.addEventListener('click', function(){
+        if(store.getState()%2 !== 0) 
+            store.dispatch({ type:'INCREMENT' })
+    }, false);
+
+    // handle incrementAsync
+    incrementAsync.addEventListener('click', function(){
+        setTimeout(function(){
+            store.dispatch({ type:'INCREMENT' })
+        }, 500)
+    }, false);
+
+    
+</script>
+    
+</body>
+</html>

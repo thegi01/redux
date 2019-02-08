@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter Vanila</title>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+
+<div>
+    <p>
+        Clicked: <span id="display">0</span> times
+        <button id="increment">+</button>
+        <button id="decrement">-</button>
+        <button id="incrementIfOdd">Increment if odd</button>
+        <button id="incrementAsync">Increment async</button>
+    </p>
+</div>
+
+<script>
+
+    var value = Number(display.textContent);
+
+    // handle increment
+    increment.addEventListener('click', function(){
+        render( ++value );
+    }, false);
+
+    // handle decrement
+    decrement.addEventListener('click', function(){
+        render( --value );
+    }, false);
+
+    // handle incrementIfOdd
+    incrementIfOdd.addEventListener('click', function(){
+        if(value%2 === 1) {
+            render( ++value );
+        }
+        return;
+    }, false);
+
+    // handle incrementAsync
+    incrementAsync.addEventListener('click', function(){
+        setTimeout(function(){
+            render( ++value );
+        }, 500)
+    }, false);
+
+    // render
+    function render( number ){
+        display.textContent = number;
+    }
+</script>
+    
+</body>
+</html>
