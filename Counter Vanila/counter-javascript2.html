@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter Vanila</title>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+
+<div>
+    <p>
+        Clicked: <span id="display">0</span> times
+        <button id="increment">+</button>
+        <button id="decrement">-</button>
+        <button id="incrementIfOdd">Increment if odd</button>
+        <button id="incrementAsync">Increment async</button>
+    </p>
+</div>
+
+<script>
+
+    function cpntCounter(){
+
+        let data = {
+            counter: 0
+        };
+
+        const actions = {
+            INCREMNT: 'INCREMNT',
+            DECREMENT: 'DECREMENT'
+        }
+
+        function render(){
+            display.textContent = data.counter;
+        }
+
+        function handleCounter( type ){
+            switch( type ){
+                case actions.INCREMNT:
+                    data.counter = data.counter + 1;
+                    break;
+                case actions.DECREMENT:
+                    data.counter = data.counter - 1;
+                    break;
+                default:
+                    break;
+            }
+            render();
+        }
+
+
+        increment.addEventListener('click', function(){
+            handleCounter( actions.INCREMNT );
+        }, false);
+
+        decrement.addEventListener('click', function(){
+            handleCounter( actions.DECREMENT );
+        }, false);
+
+        incrementIfOdd.addEventListener('click', function(){
+            if( data.counter%2 !== 0 ) 
+                handleCounter( actions.INCREMNT );
+        }, false);
+
+        incrementAsync.addEventListener('click', function(){
+            setTimeout(function(){
+                handleCounter( actions.INCREMNT );
+            }, 500)
+        }, false);
+
+    }
+    cpntCounter();
+
+
+
+
+    
+</script>
+    
+</body>
+</html>
