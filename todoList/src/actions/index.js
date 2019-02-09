@@ -1,5 +1,5 @@
 
-let textTodoId = 0;
+let nextTodoId = 0;
 
 export const addTodo = text => ({
     type: 'ADD_TODO',

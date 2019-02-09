@@ -1,10 +1,10 @@
 import React from 'react'
-import PropTypes form 'prop-types'
+import PropTypes from 'prop-types'
 
 const Link = ({ active, children, onClick }) => (
     <button
         onClick={onClick}
-        diabled={active}
+        disabled={active}
         style={{
             marginLeft: '4px'
         }}
@@ -13,7 +13,7 @@ const Link = ({ active, children, onClick }) => (
     </button>
 )
 
-Link.PropTypes = {
+Link.propTypes = {
     active: PropTypes.bool.isRequried,
     children: PropTypes.node.isRequried,
     onClick: PropTypes.func.isRequried
