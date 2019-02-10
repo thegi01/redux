@@ -14,9 +14,9 @@ const Link = ({ active, children, onClick }) => (
 )
 
 Link.propTypes = {
-    active: PropTypes.bool.isRequired,
-    children: PropTypes.node.isRequired,
-    onClick: PropTypes.func.isRequired
+    active: PropTypes.bool.isRequried,
+    children: PropTypes.node.isRequried,
+    onClick: PropTypes.func.isRequried
 }
 
 export default Link
