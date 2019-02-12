@@ -8,13 +8,11 @@
 <body>
 
 <div>
-    <p>
-        Clicked: <span id="display">0</span> times
-        <button id="increment">+</button>
-        <button id="decrement">-</button>
-        <button id="incrementIfOdd">Increment if odd</button>
-        <button id="incrementAsync">Increment async</button>
-    </p>
+    Clicked: <span id="display">0</span> times
+    <button id="increment">+</button>
+    <button id="decrement">-</button>
+    <button id="incrementIfOdd">Increment if odd</button>
+    <button id="incrementAsync">Increment async</button>
 </div>
 
 <script>
@@ -25,9 +23,10 @@
             counter: 0
         };
 
-        const actions = {
+        const CONSTANT = {
             INCREMNT: 'INCREMNT',
-            DECREMENT: 'DECREMENT'
+            DECREMENT: 'DECREMENT',
+            INCREMNT_IF_ODD: 'INCREMNT_IF_ODD'
         }
 
         function render(){
@@ -35,36 +34,41 @@
         }
 
         function handleCounter( type ){
+            let value = data.counter;
             switch( type ){
-                case actions.INCREMNT:
-                    data.counter = data.counter + 1;
+                case CONSTANT.INCREMNT:
+                    value = value + 1;
                     break;
-                case actions.DECREMENT:
-                    data.counter = data.counter - 1;
+                case CONSTANT.DECREMENT:
+                    value = value - 1;
+                    break;
+                case CONSTANT.INCREMNT_IF_ODD:
+                    if( value%2 !== 0 )
+                        value = value + 1;
                     break;
                 default:
                     break;
             }
+            data.counter = value;
             render();
         }
 
 
         increment.addEventListener('click', function(){
-            handleCounter( actions.INCREMNT );
+            handleCounter( CONSTANT.INCREMNT );
         }, false);
 
         decrement.addEventListener('click', function(){
-            handleCounter( actions.DECREMENT );
+            handleCounter( CONSTANT.DECREMENT );
         }, false);
 
         incrementIfOdd.addEventListener('click', function(){
-            if( data.counter%2 !== 0 ) 
-                handleCounter( actions.INCREMNT );
+            handleCounter( CONSTANT.INCREMNT_IF_ODD );
         }, false);
 
         incrementAsync.addEventListener('click', function(){
             setTimeout(function(){
-                handleCounter( actions.INCREMNT );
+                handleCounter( CONSTANT.INCREMNT );
             }, 500)
         }, false);
 
