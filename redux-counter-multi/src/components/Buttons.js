@@ -4,7 +4,7 @@ import PropTypes  from 'prop-types'
 import './Buttons.css'
 
 const Buttons = ({onCreate, onRemove}) => {
-    return{
+    return(
         <div className="Buttons">
             <div className="btn add" onClick={onCreate}>
                 생성
@@ -13,7 +13,7 @@ const Buttons = ({onCreate, onRemove}) => {
                 제거
             </div>
         </div>
-    }
+    )
 }
 
 Buttons.propTypes = {

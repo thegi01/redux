@@ -15,7 +15,7 @@
 }
 
 .Buttons .add {
-    background: #37b24d;
+    background: gray;
 }
 
 .Buttons .add:hover {
@@ -23,7 +23,7 @@
 }
 
 .Buttons .remove {
-    background: #f03e3e;
+    background: gray;
 }
 
 .Buttons .remove:hover {

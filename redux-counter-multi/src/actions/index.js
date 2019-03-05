@@ -11,9 +11,9 @@ export const create = ( color ) => ({
     color
 })
 
-export const remove = () => {
+export const remove = () => ({
     type: types.REMOVE
-}
+})
 
 export const increment = ( index ) => ({
     type: types.INCREMENT,
