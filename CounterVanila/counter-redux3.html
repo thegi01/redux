@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Counter Vanila</title>
+    <meta name="viewport" content="width=device-width">
+    <script src="./redux.min.js"></script>
+</head>
+<body>
+
+<div id="cpntCounter">
+    <p>
+        Clicked: <span id="display"></span> times
+        <button id="increment">+</button>
+        <button id="decrement">-</button>
+        <button id="incrementIfOdd">Increment if odd</button>
+        <button id="incrementAsync">Increment async</button>
+    </p>
+</div>
+
+<script>
+
+    const INCREMENT = 'INCREMENT'
+    const INCREMENT_IF_ODD = 'INCREMENT_IF_ODD'
+    const DECREMENT = 'DECREMENT'
+
+    const initialState = {
+        value: 0
+    }
+    
+    const counter = (state=initialState, action) => {
+        switch(  action.type ){
+            case INCREMENT:
+                return {
+                    value: state.value + 1
+                }
+            case INCREMENT_IF_ODD:
+                return {
+                    value: (state.value%2 !== 0) ? state.value + 1: state.value
+                }
+            case DECREMENT:
+                return {
+                    value: state.value - 1
+                }
+            default:
+                return state
+        }
+    }
+
+    const store = Redux.createStore(counter)
+
+    const action = type => store.dispatch({type})
+
+    const render = () => {
+        display.textContent = store.getState().value.toString();
+    }
+
+    render()
+    store.subscribe(render)
+    
+
+    // handle increment
+    increment.addEventListener('click', () => {
+        action(INCREMENT)
+    });
+
+    // handle decrement
+    decrement.addEventListener('click', () => {
+        action(DECREMENT)
+    });
+
+    // handle incrementIfOdd
+    incrementIfOdd.addEventListener('click', () => {
+        action(INCREMENT_IF_ODD)
+    });
+
+    // handle incrementAsync
+    incrementAsync.addEventListener('click', () =>{
+        setTimeout(function(){
+            action(INCREMENT)
+        }, 500)
+    });
+
+    
+</script>
+    
+</body>
+</html>

@@ -25,17 +25,19 @@
     function counter(state=0, action){
         switch(action.type){
             case 'INCREMENT':
-                return state+1
+                return state + 1
             case 'INCREMENT_IF_ODD':
                 return (state%2 !== 0) ? state + 1: state
             case 'DECREMENT':
-                return state-1
+                return state - 1
             default:
                 return state
         }
     }
 
     var store = Redux.createStore(counter)
+
+    var action = type => store.dispatch({type})
 
     function render(){
         display.textContent = store.getState().toString();
@@ -47,25 +49,23 @@
 
     // handle increment
     increment.addEventListener('click', function(){
-        store.dispatch({ type:'INCREMENT' })
+        action('INCREMENT')
     }, false);
 
     // handle decrement
     decrement.addEventListener('click', function(){
-        store.dispatch({ type:'DECREMENT' })
+        action('DECREMENT')
     }, false);
 
     // handle incrementIfOdd
     incrementIfOdd.addEventListener('click', function(){
-        store.dispatch({type: 'INCREMENT_IF_ODD'})
-        // if(store.getState()%2 !== 0) 
-        //     store.dispatch({ type:'INCREMENT' })
+        action('INCREMENT_IF_ODD')
     }, false);
 
     // handle incrementAsync
     incrementAsync.addEventListener('click', function(){
         setTimeout(function(){
-            store.dispatch({ type:'INCREMENT' })
+            action('INCREMENT')
         }, 500)
     }, false);
 
