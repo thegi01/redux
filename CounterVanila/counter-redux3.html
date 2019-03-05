@@ -19,26 +19,40 @@
 </div>
 
 <script>
+
+    const INCREMENT = 'INCREMENT'
+    const INCREMENT_IF_ODD = 'INCREMENT_IF_ODD'
+    const DECREMENT = 'DECREMENT'
+
+    const initialState = {
+        value: 0
+    }
     
-    function counter(state=0, action){
-        switch(action.type){
-            case 'INCREMENT':
-                return state + 1
-            case 'INCREMENT_IF_ODD':
-                return (state%2 !== 0) ? state + 1: state
-            case 'DECREMENT':
-                return state - 1
+    const counter = (state=initialState, action) => {
+        switch(  action.type ){
+            case INCREMENT:
+                return {
+                    value: state.value + 1
+                }
+            case INCREMENT_IF_ODD:
+                return {
+                    value: (state.value%2 !== 0) ? state.value + 1: state.value
+                }
+            case DECREMENT:
+                return {
+                    value: state.value - 1
+                }
             default:
                 return state
         }
     }
 
-    var store = Redux.createStore(counter)
+    const store = Redux.createStore(counter)
 
-    var action = type => store.dispatch({type})
+    const action = type => store.dispatch({type})
 
-    function render(){
-        display.textContent = store.getState().toString();
+    const render = () => {
+        display.textContent = store.getState().value.toString();
     }
 
     render()
@@ -46,28 +60,26 @@
     
 
     // handle increment
-    increment.addEventListener('click', function(){
-        action('INCREMENT')
-    }, false);
+    increment.addEventListener('click', () => {
+        action(INCREMENT)
+    });
 
     // handle decrement
-    decrement.addEventListener('click', function(){
-        action('DECREMENT')
-    }, false);
+    decrement.addEventListener('click', () => {
+        action(DECREMENT)
+    });
 
     // handle incrementIfOdd
-    incrementIfOdd.addEventListener('click', function(){
-        action('INCREMENT_IF_ODD')
-    }, false);
+    incrementIfOdd.addEventListener('click', () => {
+        action(INCREMENT_IF_ODD)
+    });
 
     // handle incrementAsync
-    incrementAsync.addEventListener('click', function(){
+    incrementAsync.addEventListener('click', () =>{
         setTimeout(function(){
-            action('INCREMENT')
+            action(INCREMENT)
         }, 500)
-    }, false);
-
-
+    });
 
     
 </script>
