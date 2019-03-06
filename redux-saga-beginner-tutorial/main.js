@@ -9,7 +9,6 @@ import Counter from './Counter'
 import reducer from './reducers'
 import rootSaga from './sagas'
 
-
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
     reducer,
