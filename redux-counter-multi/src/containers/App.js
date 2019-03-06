@@ -30,6 +30,6 @@ const mapToDispatch = (dispatch) => ({
     onRemove: (index) => dispatch(actions.remove(index))
 });
 
-// 리덕스에 연결을 시키도 내보난다.
+// 리덕스에 연결을 시키고 내보낸다.
 export default connect(null, mapToDispatch)(App);
 
